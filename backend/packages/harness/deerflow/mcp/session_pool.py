@@ -55,7 +55,11 @@ from typing import Any, Literal
 
 import anyio
 from mcp import ClientSession
-from mcp.shared.exceptions import McpError
+
+try:
+    from mcp.shared.exceptions import McpError
+except ImportError:
+    from mcp.shared.exceptions import MCPError as McpError
 from mcp.types import CONNECTION_CLOSED
 
 from deerflow.mcp_scope import mcp_scope_belongs_to_thread
