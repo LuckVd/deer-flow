@@ -9,7 +9,9 @@ An unchanged one-time execution time can still be saved within `scheduler.min_on
 One-time local timestamps saved through chat or the API retain their seconds
 and fractional seconds when the Web UI resolves them in the task's timezone.
 This includes stored timestamps such as `2026-12-07T09:00.5`, which the
-scheduler interprets as `09:00:00.5` in that timezone.
+scheduler interprets as `09:00:00.5` in that timezone. For display and editing,
+explicit hour-only offsets such as `+08` are interpreted as `+08:00`; this
+normalization does not change the saved timestamp.
 
 Current MVP capabilities:
 

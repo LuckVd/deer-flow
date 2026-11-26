@@ -608,6 +608,15 @@ describe("onceRunAtInstant", () => {
     );
   });
 
+  test.each([
+    ["2026-12-12T09:30:00+08", "2026-12-12T09:30:00+08:00"],
+    ["2026-12-12T09:30:45.123-05", "2026-12-12T09:30:45.123-05:00"],
+  ])("normalizes an hour-only offset in %s", (value, expected) => {
+    const instant = onceRunAtInstant(value, "Europe/Berlin");
+    expect(instant).toBe(expected);
+    expect(Date.parse(instant)).toBe(Date.parse(expected));
+  });
+
   test("a run_at with an offset is already an instant", () => {
     for (const value of [
       "2026-10-07T01:00:00Z",
